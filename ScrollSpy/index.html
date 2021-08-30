@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Scroll Spy</title>
+</head>
+<body>
+    <header>
+
+        <nav>
+            <a class='active' href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#services">services</a>
+            <a href="#gallery">gallery</a>
+            <a href="#blogs">blogs</a>
+            <a href="#contact">contact</a>
+        </nav>
+    </header>
+
+<section id="home">home</section>
+<section id="about">about</section>
+<section id="services">services</section>
+<section id="gallery">gallery</section>
+<section id="blogs">blogs</section>
+<section id="contact">contact</section>
+
+<script>
+
+let section = document.querySelectorAll('section');
+let navLinks = document.querySelectorAll('header nav a');
+
+let idshnik = document.querySelector("header nav a[href*='gs']");
+console.log(idshnik);
+
+window.onscroll = () => {
+
+    section.forEach(sec => {
+        let top = window.scrollY;
+        let offset = sec.offsetTop - 150;
+        let height = sec.offsetHeight;
+        let id = sec.getAttribute('id');
+
+//        console.log(top, offset,height,id);
+        if(top >= offset && top < offset + height){
+            navLinks.forEach(links =>{
+                links.classList.remove('active');
+                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+            })
+        }
+
+
+    })
+
+
+
+}
+
+
+</script>
+
+
+</body>
+</html>
